@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1617050366 source:c:\users\h.yazdi\desktop\codeblocksprojects\mm_struct\mm\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<unistd.h>
+	<limits.h>
+	<dirent.h>
+

@@ -1,0 +1,1956 @@
+<transitionsystem>
+<state id="1_0" atomicpropositions="l,u,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">start()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="2_0" atomicpropositions="right,l,u,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">start()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="6_0" atomicpropositions="l,down,u,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="7_0" atomicpropositions="left,r,u,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">l(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">start()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="9_0" atomicpropositions="right,l,down,u,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="14_0" atomicpropositions="l,down,d,lcB_cylBdown,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">up(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="16_0" atomicpropositions="left,r,down,u,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">l(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="18_0" atomicpropositions="right,l,down,d,lcB_cylBdown,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">up(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="19_0" atomicpropositions="l,up,d,lcB_cylBdown,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="23_0" atomicpropositions="right,l,up,d,lcB_cylBdown,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="26_0" atomicpropositions="left,r,down,d,lcB_cylBdown,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">l(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">up(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="29_0" atomicpropositions="l,up,u,lcB_cylBup,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">u()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="31_0" atomicpropositions="left,r,up,d,lcB_cylBdown,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">l(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="33_0" atomicpropositions="right,l,up,u,lcB_cylBup,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">u()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="39_0" atomicpropositions="right,l,up,u,lcB_cylBup," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="41_0" atomicpropositions="left,r,up,u,lcB_cylBup,lcA_cylAleft,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">l(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">u()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="58_0" atomicpropositions="right,r,up,u,lcB_cylBright,lcA_cylAright," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">down(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="63_0" atomicpropositions="right,r,up,u,lcB_cylBright,lcA_cylAright,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">down(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="65_0" atomicpropositions="right,r,down,u,lcB_cylBright,lcA_cylAright," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="70_0" atomicpropositions="right,r,down,u,lcB_cylBright,lcA_cylAright,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="79_0" atomicpropositions="right,r,down,d,lcA_cylAright," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">up(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="81_0" atomicpropositions="left,l,up,u,lcB_cylBright,lcA_cylAright,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">down(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="86_0" atomicpropositions="right,r,up,d,lcA_cylAright," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="88_0" atomicpropositions="left,l,down,u,lcB_cylBright,lcA_cylAright,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="91_0" atomicpropositions="right,r,up,d,lcA_cylAright,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">true</variable>
+			<variable name="Cylinder_A.left" type="boolean">false</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">r(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="109_0" atomicpropositions="left,l,up,d,lcA_cylAright,dead_stateA," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="114_0" atomicpropositions="left,r,up,u,lcA_cylAup," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">false</variable>
+			<variable name="Cylinder_A.r" type="boolean">true</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">l(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="147_0" atomicpropositions="left,l,down,u,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">d(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">true</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="160_0" atomicpropositions="left,l,down,d,lcB_cylBdown,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">false</variable>
+			<variable name="Cylinder_B.down" type="boolean">true</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">up(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="165_0" atomicpropositions="left,l,up,d,lcB_cylBdown,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">false</variable>
+			<variable name="Cylinder_B.d" type="boolean">true</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_B">u(1)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">true</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<state id="173_0" atomicpropositions="left,l,up,u,lcB_cylBup,lcA_cylAleft," >
+	<rebec name="cylinder_A">
+		<statevariables>
+			<variable name="Cylinder_A.right" type="boolean">false</variable>
+			<variable name="Cylinder_A.left" type="boolean">true</variable>
+			<variable name="Cylinder_A.l" type="boolean">true</variable>
+			<variable name="Cylinder_A.r" type="boolean">false</variable>
+			<variable name="Cylinder_A.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="cylinder_A">right(0)</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="cylinder_B">
+		<statevariables>
+			<variable name="Cylinder_B.up" type="boolean">true</variable>
+			<variable name="Cylinder_B.down" type="boolean">false</variable>
+			<variable name="Cylinder_B.u" type="boolean">true</variable>
+			<variable name="Cylinder_B.d" type="boolean">false</variable>
+			<variable name="Cylinder_B.dead_state" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_A">
+		<statevariables>
+			<variable name="LocalControllerA.turn" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAleft" type="boolean">true</variable>
+			<variable name="LocalControllerA.cylAright" type="boolean">false</variable>
+			<variable name="LocalControllerA.cylAup" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+			<message arrival="0" deadline="infinity" sender="lc_B">u()</message>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+	<rebec name="lc_B">
+		<statevariables>
+			<variable name="LocalControllerB.cylBdown" type="boolean">false</variable>
+			<variable name="LocalControllerB.cylBup" type="boolean">true</variable>
+			<variable name="LocalControllerB.cylBright" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn1" type="boolean">false</variable>
+			<variable name="LocalControllerB.turn2" type="boolean">false</variable>
+		</statevariables>
+		<queue>
+		</queue>
+		<now>0</now>
+		<pc></pc>
+		<res></res>
+	</rebec>
+</state>
+<transition source="1_0" destination="2_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="1_0" destination="1_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="START"/></transition>
+<transition source="2_0" destination="2_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="2_0" destination="2_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="START"/></transition>
+<transition source="1_0" destination="6_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="2_0" destination="7_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="2_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="6_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="6_0" destination="6_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="9_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="9_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="6_0" destination="14_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="7_0" destination="7_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="7_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="9_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="9_0" destination="18_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="14_0" destination="18_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="14_0" destination="19_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="16_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="16_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="18_0" destination="18_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="18_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="19_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="19_0" destination="19_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="16_0" destination="26_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="18_0" destination="26_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="23_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="23_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="19_0" destination="29_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="26_0" destination="26_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="26_0" destination="31_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="23_0" destination="31_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="23_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="29_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="29_0" destination="29_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="26_0" destination="18_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="31_0" destination="31_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="31_0" destination="31_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="33_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="33_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="29_0" destination="39_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="31_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="31_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="33_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="33_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="39_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="39_0" destination="39_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="41_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="41_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="41_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="39_0" destination="58_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="33_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="41_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="33_0" destination="63_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="58_0" destination="63_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="58_0" destination="65_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="63_0" destination="63_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="63_0" destination="70_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="65_0" destination="70_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="65_0" destination="65_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="70_0" destination="70_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="70_0" destination="70_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="65_0" destination="79_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="41_0" destination="81_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="63_0" destination="81_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="70_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="79_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="79_0" destination="86_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="63_0" destination="63_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="81_0" destination="63_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="81_0" destination="88_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="70_0" destination="88_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="9_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="86_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="86_0" destination="86_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="70_0" destination="70_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="88_0" destination="70_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="88_0" destination="88_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="91_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="91_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="88_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="9_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="9_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="16_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="16_0" destination="109_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="91_0" destination="109_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="86_0" destination="114_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="91_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="109_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="109_0" destination="109_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="91_0" destination="109_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="114_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="114_0" destination="114_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="109_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="109_0" destination="109_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="109_0" destination="109_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="114_0" destination="147_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="91_0" destination="91_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="109_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="147_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="147_0" destination="147_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="91_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="DOWN"/></transition>
+<transition source="16_0" destination="9_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="147_0" destination="160_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="D"/></transition>
+<transition source="16_0" destination="16_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="160_0" destination="18_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="160_0" destination="165_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="UP"/></transition>
+<transition source="26_0" destination="18_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="165_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="165_0" destination="165_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="31_0" destination="23_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="26_0" destination="26_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="165_0" destination="173_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="31_0" destination="31_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="173_0" destination="33_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="173_0" destination="173_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="U"/></transition>
+<transition source="173_0" destination="39_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="41_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="70_0" destination="88_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="63_0" destination="81_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="LEFT"/></transition>
+<transition source="41_0" destination="41_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="R"/></transition>
+<transition source="88_0" destination="88_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="81_0" destination="81_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="L"/></transition>
+<transition source="7_0" destination="2_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="RIGHT"/></transition>
+<transition source="7_0" destination="7_0" executionTime="0" shift="0"> <messageserver sender="" owner="" title="START"/></transition>
+</transitionsystem>

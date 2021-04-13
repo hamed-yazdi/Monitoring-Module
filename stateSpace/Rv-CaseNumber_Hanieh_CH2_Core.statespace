@@ -1,0 +1,76 @@
+<transitionsystem>
+<state id="0" atomicpropositions="temp_22,Window_Closed," >
+	<rebec name="controler">
+		<statevariables>
+			<variable name="Controler.temp" type="int">22</variable>
+			<variable name="Controler.window" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message sender="controler">Sense(22)</message>
+		</queue>
+	</rebec>
+</state>
+<state id="1" atomicpropositions="temp_22,Window_Closed," >
+	<rebec name="controler">
+		<statevariables>
+			<variable name="Controler.temp" type="int">22</variable>
+			<variable name="Controler.window" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message sender="controler">Cool()</message>
+		</queue>
+	</rebec>
+</state>
+<transition source="0" destination="1"> <messageserver sender="controler" owner="controler" title="SENSE"/></transition>
+<state id="2" atomicpropositions="temp_21,Window_Closed," >
+	<rebec name="controler">
+		<statevariables>
+			<variable name="Controler.temp" type="int">21</variable>
+			<variable name="Controler.window" type="int">0</variable>
+		</statevariables>
+		<queue>
+			<message sender="controler">Sense(21)</message>
+		</queue>
+	</rebec>
+</state>
+<transition source="1" destination="2"> <messageserver sender="controler" owner="controler" title="COOL"/></transition>
+<state id="3" atomicpropositions="temp_20,Window_Open," >
+	<rebec name="controler">
+		<statevariables>
+			<variable name="Controler.temp" type="int">20</variable>
+			<variable name="Controler.window" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message sender="controler">Sense(20)</message>
+		</queue>
+	</rebec>
+</state>
+<transition source="2" destination="3"> <messageserver sender="controler" owner="controler" title="SENSE"/></transition>
+<transition source="2" destination="2"> <messageserver sender="controler" owner="controler" title="SENSE"/></transition>
+<state id="4" atomicpropositions="temp_20,Window_Open," >
+	<rebec name="controler">
+		<statevariables>
+			<variable name="Controler.temp" type="int">20</variable>
+			<variable name="Controler.window" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message sender="controler">Heat()</message>
+		</queue>
+	</rebec>
+</state>
+<transition source="3" destination="4"> <messageserver sender="controler" owner="controler" title="SENSE"/></transition>
+<state id="5" atomicpropositions="temp_21,Window_Open," >
+	<rebec name="controler">
+		<statevariables>
+			<variable name="Controler.temp" type="int">21</variable>
+			<variable name="Controler.window" type="int">1</variable>
+		</statevariables>
+		<queue>
+			<message sender="controler">Sense(21)</message>
+		</queue>
+	</rebec>
+</state>
+<transition source="4" destination="5"> <messageserver sender="controler" owner="controler" title="HEAT"/></transition>
+<transition source="5" destination="3"> <messageserver sender="controler" owner="controler" title="SENSE"/></transition>
+<transition source="5" destination="2"> <messageserver sender="controler" owner="controler" title="SENSE"/></transition>
+</transitionsystem>

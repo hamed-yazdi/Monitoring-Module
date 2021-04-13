@@ -7,6 +7,8 @@
 #include<dirent.h>
 #define MAXCHAR 1000
 
+char initState[10]="-";
+
 void createDataBase();
 
 int main()
@@ -36,7 +38,8 @@ int main()
     printf("#############################\n");
     createDataBase();
     printf("data base has been created successfully.\n\n");
-    char present_state[10]= "1_0";
+    char present_state[10]= "-";
+    strcpy(present_state, initState);
     char stateFile[MAXCHAR]="";
     while(1)
     {
@@ -48,11 +51,11 @@ int main()
         FILE *fp;
         fp = fopen(stateFile, "r");
         char str[MAXCHAR];
-        char next_state[10]="";
-        char executionTime[10]="";
+        char next_state[10]="-";
+        char executionTime[10]="-";
         char title[20]="";
-        char timeValue[10]="";
-        char variables[MAXCHAR]="";
+        char timeValue[10]="-";
+        char variables[MAXCHAR]="-";
         while (fgets(str, MAXCHAR, fp) != NULL)
         {
             char delim[] = " \t\:";
@@ -96,13 +99,13 @@ int main()
                 strcpy(variables, strtok(NULL, delim));
                 int size = strlen(variables);
                 variables[size - 3] = '\0';
-                free(size);
+                //free(size);
                 continue;
             }
             else if ((strcmp(str_ptr, "transition") == 0))
             {
-                char next_state1[10]="";
-                char executionTime1[10]="";
+                char next_state1[10]="-";
+                char executionTime1[10]="-";
                 char title1[20]="";
                 char delim1[] = " \:\t";
                 while (str_ptr != NULL)
@@ -150,7 +153,7 @@ int main()
                                         strcpy(variables, strtok(NULL, delim));
                                         int size = strlen(variables);
                                         variables[size - 3] = '\0';
-                                        free(size);
+                                        //free(size);
                                         break;
                                 }
                             }
@@ -228,19 +231,25 @@ void createDataBase()
         printf("Could not open file statespace file");
         //return 1;
     }
+    int initStateIndex=1;
     while (fgets(str, MAXCHAR, fp) != NULL)
     {
         char delim[] = " \"\t<>";
         char *str_ptr = strtok(str, delim);
         if (strcmp(str_ptr, "state") == 0)
         {
-                char state_id[10]="";
+                char state_id[10]="-";
                 str_ptr = strtok(NULL, delim);
                 while(str_ptr != NULL)
                     {
                         if (strcmp(str_ptr, "id=") == 0)
                         {
                             strcpy(state_id, strtok(NULL, delim));
+                            if (initStateIndex == 1)
+                            {
+                                strcpy(initState, state_id);
+                                initStateIndex--;
+                            }
                             break;
                         }
                         str_ptr = strtok(NULL, delim);
@@ -262,8 +271,8 @@ void createDataBase()
        }
        else if (strcmp(str_ptr, "variable") == 0)
        {
-           char variable_name[50]="";
-           char value[10]="";
+           char variable_name[50]="-";
+           char value[10]="-";
            while(str_ptr != NULL)
             {
                 str_ptr = strtok(NULL, delim);
@@ -286,8 +295,8 @@ void createDataBase()
        }
        else if (strcmp(str_ptr, "transition") == 0)
        {
-           char destination[10]="";
-           char executionTime[10]="";
+           char destination[10]="-";
+           char executionTime[10]="-";
            char title[20]="";
            char timeValue[10]="-";
            while(str_ptr != NULL)
@@ -295,7 +304,7 @@ void createDataBase()
                 str_ptr = strtok(NULL, delim);
                 if (strcmp(str_ptr, "source=") == 0)
                 {
-                    char *state_id="";
+                    char *state_id="-";
                     state_id = strtok(NULL, delim);
                     getcwd(cwd, sizeof(cwd));
                     char stateSpaceDB[MAXCHAR]="";

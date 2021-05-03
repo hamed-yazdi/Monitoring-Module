@@ -5,17 +5,71 @@
 #include <unistd.h>
 #include <limits.h>
 #include<dirent.h>
+#include <omp.h>
+#include<stdbool.h>
 #define MAXCHAR 1000
+#define MINCHAR 30
 
-char initState[10]="-";
 
+
+char stateSpaceDB[MAXCHAR]=""; //location of state spaces data base
+char eventLogs[MAXCHAR]=""; //location of event log file
+char initState[MINCHAR]="-";
+char input[MINCHAR]="";
+long start_time;
+int inputState=0; //inputState=0 no input, inputState=1 have input
+char presentStateArray[10][MINCHAR];
+int presentSAIndex=0; //index of free location for inserting current present state
+char timedStateArray[10][5][MINCHAR]; //[x][0][x] refer to waiting time, [x][1][x] refer to present state, [x][2][x] refer to next state
+int timedSAIndex=0; //index of free location of current present state which include time waiting
+char correctMessage[MAXCHAR][MINCHAR];//this is an array in order to save valid messages
+int cMIndex=0;
+bool switching;
+
+void initDir();
 void createDataBase();
+void listen();
+void presentStates();
+void timedStates();
+void monitor(char message[MINCHAR], char present_state[MINCHAR]);
+void logging(char start_time[MINCHAR], char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR], char variables[MAXCHAR]);
+void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR]);
+void errorPrint(char input[MINCHAR], char error[MAXCHAR]);
 
 int main()
 {
+    //###Create necessary folders (stateSpaceDB, eventLogs) in current directory
+    initDir(stateSpaceDB, eventLogs);
+    //###Create database and specify initial state by createDataBase function
+    printf("Create DataBase form spacastate file:\n");
+    printf("#############################\n");
+    createDataBase();
+    printf("data base has been created successfully.\n\n");
+    //###Create initial array and counters
+    strcpy(presentStateArray[presentSAIndex], initState);
+    presentSAIndex++;
+    //###enable 3 thread in order to handle main modules
+    #pragma omp parallel num_threads(3)
+    {
+        #pragma omp single nowait
+        {
+            listen();
+        }
+        #pragma omp single nowait
+        {
+            presentStates();
+        }
+        #pragma omp single nowait
+        {
+            timedStates();
+        }
+    }
+}
+
+void initDir()
+{
     char cwd[MAXCHAR];
     getcwd(cwd, sizeof(cwd));
-    char stateSpaceDB[MAXCHAR]="";
     strcpy(stateSpaceDB, cwd);
     strcat(stateSpaceDB,"\\stateSpaceDB\\");
     DIR *d;
@@ -30,168 +84,9 @@ int main()
         free(file);
     }
     closedir(d);
-    char eventLogs[MAXCHAR]="";
     strcpy(eventLogs, cwd);
     strcat(eventLogs,"\\eventLogs\\event.logs");
     remove(eventLogs);
-    printf("Create DataBase form spacastate file:\n");
-    printf("#############################\n");
-    createDataBase();
-    printf("data base has been created successfully.\n\n");
-    char present_state[10]= "-";
-    strcpy(present_state, initState);
-    char stateFile[MAXCHAR]="";
-    while(1)
-    {
-        printf("please enter a message ! \n");
-        char message[100];
-        scanf("%s", message);
-        clock_t start_time = time(NULL);
-        snprintf(stateFile, sizeof(stateFile), "%s%s", stateSpaceDB, present_state);
-        FILE *fp;
-        fp = fopen(stateFile, "r");
-        char str[MAXCHAR];
-        char next_state[10]="-";
-        char executionTime[10]="-";
-        char title[20]="";
-        char timeValue[10]="-";
-        char variables[MAXCHAR]="-";
-        while (fgets(str, MAXCHAR, fp) != NULL)
-        {
-            char delim[] = " \t\:";
-            char *str_ptr = strtok(str, delim);
-            if ((strcmp(str_ptr, "transition") == 0))
-            {
-                str_ptr = strtok(NULL, delim);
-                str_ptr = strtok(NULL, delim);
-                if (strcmp(str_ptr, message) == 0)
-                {
-                    strcpy(title, str_ptr);
-                    str_ptr = strtok(NULL, delim);
-                    strcpy(next_state, strtok(NULL, delim));
-                    str_ptr = strtok(NULL, delim);
-                    strcpy(executionTime, strtok(NULL, delim));
-                    fclose(fp);
-                    break;
-                }
-                continue;
-            }
-            free(delim);
-            free(str_ptr);
-        }
-        if(strcmp(title, "") == 0)
-        {
-            printf("No Match Transition! %s \n", message);
-            FILE *ep;
-            ep = fopen(eventLogs, "a+");
-            fprintf(ep, "No Match Transition! %s\n", message);
-            fclose(ep);
-            continue;
-        }
-        snprintf(stateFile, sizeof(stateFile), "%s%s", stateSpaceDB, next_state);
-        fp = fopen(stateFile, "r");
-        while (fgets(str, MAXCHAR, fp) != NULL)
-        {
-            char delim[] = "\t";
-            char *str_ptr = strtok(str, delim);
-            if ((strcmp(str_ptr, "variables") == 0))
-            {
-                strcpy(variables, strtok(NULL, delim));
-                int size = strlen(variables);
-                variables[size - 3] = '\0';
-                //free(size);
-                continue;
-            }
-            else if ((strcmp(str_ptr, "transition") == 0))
-            {
-                char next_state1[10]="-";
-                char executionTime1[10]="-";
-                char title1[20]="";
-                char delim1[] = " \:\t";
-                while (str_ptr != NULL)
-                {
-                    str_ptr = strtok(NULL, delim1);
-                    if (strcmp(str_ptr, "title") == 0)
-                    {
-                        strcpy(title1, strtok(NULL, delim1));
-                        continue;
-                    }
-                    else if (strcmp(str_ptr, "destination") == 0)
-                    {
-                        strcpy(next_state1, strtok(NULL, delim1));
-                        continue;
-                    }
-                    else if (strcmp(str_ptr, "executionTime") == 0)
-                    {
-                        strcpy(executionTime1, strtok(NULL, delim1));
-                        continue;
-                    }
-                    else if (strcmp(str_ptr, "timeValue") == 0)
-                    {
-                        str_ptr = strtok(NULL, delim1);
-                        if (strcmp(str_ptr, "-") != 0)
-                        {
-                            int exeTime = atoi(str_ptr);
-                            printf("%ld %s %s %s %s %s\n",start_time, executionTime, present_state, message, next_state, variables);
-                            FILE *ep;
-                            ep = fopen(eventLogs, "a+");
-                            fprintf(ep, "%ld %s %s %s %s %s\n",start_time, executionTime, present_state, message, next_state, variables);
-                            fclose(ep);
-                            sleep(exeTime);
-                            start_time = time(NULL);
-                            strcpy(present_state, next_state);
-                            strcpy(executionTime, executionTime1);
-                            strcpy(message, title1);
-                            strcpy(next_state, next_state1);
-                            fclose(fp);
-                            snprintf(stateFile, sizeof(stateFile), "%s%s", stateSpaceDB, next_state);
-                            fp = fopen(stateFile, "r");
-                            while (fgets(str, MAXCHAR, fp) != NULL)
-                            {
-                                if ((strcmp(str_ptr, "variables") == 0))
-                                {
-                                        strcpy(variables, strtok(NULL, delim));
-                                        int size = strlen(variables);
-                                        variables[size - 3] = '\0';
-                                        //free(size);
-                                        break;
-                                }
-                            }
-                            free(exeTime);
-                        }
-                        break;
-                    }
-                }
-                free(next_state1);
-                free(executionTime1);
-                free(title1);
-                free(delim1);
-            }
-            free(delim);
-            free(str_ptr);
-        }
-        fclose(fp);
-        printf("%ld %s %s %s %s %s\n",start_time, executionTime, present_state, message, next_state, variables);
-        FILE *ep;
-        ep = fopen(eventLogs, "a+");
-        fprintf(ep, "%ld %s %s %s %s %s\n",start_time, executionTime, present_state, message, next_state, variables);
-        fclose(ep);
-        strcpy(present_state, next_state);
-        strcpy(next_state, "");
-        free(message);
-        free(str);
-        free(executionTime);
-        free(title);
-        free(variables);
-        free(next_state);
-        free(timeValue);
-    }
-    free(cwd);
-    free(stateSpaceDB);
-    free(eventLogs);
-    free(present_state);
-    free(stateFile);
-    //return 0;
 }
 
 void createDataBase()
@@ -229,7 +124,6 @@ void createDataBase()
     if (fp == NULL)
     {
         printf("Could not open file statespace file");
-        //return 1;
     }
     int initStateIndex=1;
     while (fgets(str, MAXCHAR, fp) != NULL)
@@ -238,7 +132,7 @@ void createDataBase()
         char *str_ptr = strtok(str, delim);
         if (strcmp(str_ptr, "state") == 0)
         {
-                char state_id[10]="-";
+                char state_id[MINCHAR]="-";
                 str_ptr = strtok(NULL, delim);
                 while(str_ptr != NULL)
                     {
@@ -271,8 +165,8 @@ void createDataBase()
        }
        else if (strcmp(str_ptr, "variable") == 0)
        {
-           char variable_name[50]="-";
-           char value[10]="-";
+           char variable_name[MAXCHAR]="-";
+           char value[MINCHAR]="-";
            while(str_ptr != NULL)
             {
                 str_ptr = strtok(NULL, delim);
@@ -295,10 +189,10 @@ void createDataBase()
        }
        else if (strcmp(str_ptr, "transition") == 0)
        {
-           char destination[10]="-";
-           char executionTime[10]="-";
-           char title[20]="";
-           char timeValue[10]="-";
+           char destination[MINCHAR]="-";
+           char executionTime[MINCHAR]="-";
+           char title[MINCHAR]="";
+           char timeValue[MINCHAR]="-";
            while(str_ptr != NULL)
             {
                 str_ptr = strtok(NULL, delim);
@@ -329,13 +223,21 @@ void createDataBase()
                     strcpy(title, strtok(NULL, delim));
                     if (strcmp(title, "tau=") == 0)
                     {
-                        //char t1[10] = "";
                         strcpy(title, strtok(NULL, delim));
-                        //printf("%s\n", title);
-                        //strcpy(title, strcat(title, ">"));
-                        //strcpy(title, strcat(title, t1));
-                        //strcpy(title, strtok(NULL, delim));
-                        //free(t1);
+                    }
+                    int checker=0;
+                    for(int i=0; i<cMIndex; i++)
+                    {
+                        if(strcmp(title, correctMessage[i]) == 0)
+                           {
+                               checker=1;
+                               break;
+                           }
+                    }
+                    if(checker == 0)
+                    {
+                        strcpy(correctMessage[cMIndex], title);
+                        cMIndex++;
                     }
                 }
                 else if (strcmp(str_ptr, "value=") == 0)
@@ -350,16 +252,224 @@ void createDataBase()
                     break;
                 }
             }
-            free(destination);
-            free(executionTime);
-            free(title);
-            free(timeValue);
+
        }
-       free(delim);
     }
-    free(cwd);
-    free(stateSpaceDirectory);
-    free(stateSpaceFile);
-    free(str);
     fclose(fp);
 }
+
+void listen()
+{
+    for(int i=0; i<cMIndex; i++)
+    {
+        printf("%s ", correctMessage[i]);
+    }
+    printf("\n");
+    while(1)
+    {
+        if(inputState == 0)
+        {
+            printf("please enter a message ! \n");
+            scanf("%s", input);
+            int checker=0;
+            for(int i=0; i<cMIndex; i++)
+            {
+                if(strcmp(correctMessage[i], input) == 0)
+                    {
+                        checker=1;
+                        break;
+                    }
+            }
+            if (checker == 0)
+            {
+                errorPrint(input, "input is not valid");
+                continue;
+            }
+            start_time = time(NULL);
+            inputState=1;
+        }
+    }
+
+}
+
+void presentStates()
+{//###Run parallel monitor function for do necessary action on input
+    while(1)
+    {
+        if (inputState == 1)
+        {
+            int pStateCounter = presentSAIndex;
+            switching=false;
+            char currentStatus[10][MAXCHAR];
+            for (int i=0; i<pStateCounter; i++)
+            {
+                strcpy(currentStatus[i], presentStateArray[i]);
+            }
+            presentSAIndex=0;
+            #pragma omp parallel
+            {
+                #pragma omp for nowait
+                for(int i=0; i<pStateCounter; i++)
+                {
+                    char stateID[MINCHAR];
+                    strcpy(stateID, presentStateArray[i]);
+                    strcpy(presentStateArray[i], "");
+                    monitor(input, stateID);
+                }
+            }
+            if (switching == false)
+            {
+                for (int i=0; i<pStateCounter; i++)
+                {
+                    strcpy(presentStateArray[i], currentStatus[i]);
+                    presentSAIndex++;
+                    errorPrint(input, "system no transition");
+                }
+            }
+            inputState=0;
+        }
+    }
+}
+
+ void monitor(char message[MINCHAR], char present_state[MINCHAR])
+{
+    char stateFile[MAXCHAR]="";
+    snprintf(stateFile, sizeof(stateFile), "%s%s", stateSpaceDB, present_state);
+    FILE *fp;
+    fp = fopen(stateFile, "r");
+    char str[MAXCHAR];
+    char next_state[MINCHAR]="-";
+    char executionTime[MINCHAR]="-";
+    char title[MINCHAR]="";
+    char timeValue[MINCHAR]="-";
+    while (fgets(str, MAXCHAR, fp) != NULL)
+    {
+        char delim[] = " \t\:";
+        char *str_ptr = strtok(str, delim);
+        if ((strcmp(str_ptr, "transition") == 0))
+        {
+            str_ptr = strtok(NULL, delim);
+            str_ptr = strtok(NULL, delim);
+            if (strcmp(str_ptr, message) == 0)
+            {
+                switching=true;
+                char ns_stateFile[MAXCHAR]="";
+                strcpy(title, message);
+                str_ptr = strtok(NULL, delim);
+                strcpy(next_state, strtok(NULL, delim));
+                str_ptr = strtok(NULL, delim);
+                strcpy(executionTime, strtok(NULL, delim));
+                snprintf(ns_stateFile, sizeof(ns_stateFile), "%s%s", stateSpaceDB, next_state);
+                monitorNextState(ns_stateFile, start_time, executionTime, present_state, message, next_state);
+            }
+        }
+    }
+    fclose(fp);
+}
+
+void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR])
+{
+    char ns_str[MAXCHAR];
+    char variables[MAXCHAR]="-";
+    FILE *ns_fp;
+    ns_fp = fopen(ns_stateFile, "r");
+    while (fgets(ns_str, MAXCHAR, ns_fp) != NULL)
+    {
+        char delim[] = "\t";
+        char *ns_str_ptr = strtok(ns_str, delim);
+        if ((strcmp(ns_str_ptr, "variables") == 0))
+        {
+            strcpy(variables, strtok(NULL, delim));
+            int size = strlen(variables);
+            variables[size - 3] = '\0';
+            logging(start_time, executionTime, present_state, message, next_state, variables);
+            strcpy(presentStateArray[presentSAIndex], next_state);
+            presentSAIndex++;
+            continue;
+        }
+        else if ((strcmp(ns_str_ptr, "transition") == 0))
+        {
+            strcpy(ns_str_ptr, strtok(NULL, delim));
+            char next_state1[MINCHAR]="-";
+            char executionTime1[MINCHAR]="-";
+            char title1[MINCHAR]="";
+            char delim1[] = " \:\t";
+            char *ns_str_ptr1 = strtok(ns_str_ptr, delim1);
+            while (ns_str_ptr1 != NULL)
+            {
+                if (strcmp(ns_str_ptr1, "title") == 0)
+                {
+                    strcpy(title1, strtok(NULL, delim1));
+                }
+                else if (strcmp(ns_str_ptr1, "destination") == 0)
+                {
+                    strcpy(next_state1, strtok(NULL, delim1));
+                }
+                else if (strcmp(ns_str_ptr1, "executionTime") == 0)
+                {
+                    strcpy(executionTime1, strtok(NULL, delim1));
+                }
+                else if (strcmp(ns_str_ptr1, "timeValue") == 0)
+                {
+                    strcpy(ns_str_ptr1, strtok(NULL, delim1));
+                    if (strcmp(ns_str_ptr1, "-") != 0)
+                    {
+
+                        strcpy(timedStateArray[timedSAIndex][0],ns_str_ptr1);
+                        strcpy(timedStateArray[timedSAIndex][1],next_state);
+                        strcpy(timedStateArray[timedSAIndex][2],next_state1);
+                        strcpy(timedStateArray[timedSAIndex][3],title1);
+                        strcpy(timedStateArray[timedSAIndex][4],executionTime);
+                        timedSAIndex++;
+                    }
+                    break;
+                }
+                strcpy(ns_str_ptr1, strtok(NULL, delim1));
+            }
+        }
+    }
+    fclose(ns_fp);
+}
+
+void timedStates()
+{
+    while(1)
+    {
+        if(timedSAIndex > 0)
+        {
+            timedSAIndex--;
+            int timeValue = atoi(timedStateArray[timedSAIndex][0]);
+            char present_state[MINCHAR];
+            strcpy(present_state, timedStateArray[timedSAIndex][1]);
+            char next_state[MINCHAR];
+            strcpy(next_state, timedStateArray[timedSAIndex][2]);
+            char message[MINCHAR];
+            strcpy(message, timedStateArray[timedSAIndex][3]);
+            char executionTime[MINCHAR];
+            strcpy(executionTime, timedStateArray[timedSAIndex][4]);
+            sleep(timeValue);
+            char stateFile[MAXCHAR];
+            long current_time = time(NULL);
+            snprintf(stateFile, sizeof(stateFile), "%s%s", stateSpaceDB, next_state);
+            monitorNextState(stateFile, current_time, executionTime, present_state, message, next_state);
+        }
+    }
+}
+
+void errorPrint(char input[MINCHAR], char error[MAXCHAR])
+{
+    printf("input:%s error:%s\n", input, error);
+    FILE *ep;
+    ep = fopen(eventLogs, "a+");
+    fprintf(ep, "input:%s error:%s\n",input, error);
+    fclose(ep);
+}
+void logging(char start_time[MINCHAR], char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR], char variables[MAXCHAR])
+{
+    printf("%ld %s %s %s %s %s\n",start_time, executionTime, present_state, message, next_state, variables);
+    FILE *ep;
+    ep = fopen(eventLogs, "a+");
+    fprintf(ep, "%ld %s %s %s %s %s\n",start_time, executionTime, present_state, message, next_state, variables);
+    fclose(ep);
+}
+

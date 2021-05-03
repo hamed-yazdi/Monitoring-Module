@@ -14,41 +14,38 @@
 
 char stateSpaceDB[MAXCHAR]=""; //location of state spaces data base
 char eventLogs[MAXCHAR]=""; //location of event log file
-char initState[MINCHAR]="-";
-char input[MINCHAR]="";
+char initState[MINCHAR]="-"; //initial state id
+char input[MINCHAR]=""; //input message
 long start_time;
-int inputState=0; //inputState=0 no input, inputState=1 have input
-char presentStateArray[10][MINCHAR];
-int presentSAIndex=0; //index of free location for inserting current present state
-char timedStateArray[10][5][MINCHAR]; //[x][0][x] refer to waiting time, [x][1][x] refer to present state, [x][2][x] refer to next state
-int timedSAIndex=0; //index of free location of current present state which include time waiting
+bool inputState=false; //inputState=false --> no input, inputState=true --> have input
+char presentStateArray[10][MINCHAR]; //an array for save current states in each step
+int presentSAIndex=0; //index of free location for presentStateArray
+char timedStateArray[10][5][MINCHAR]; //an array for save waited transitions
+                                      //[x][0][x] refer to waiting time, [x][1][x] refer to present state, [x][2][x] refer to next state
+int timedSAIndex=0; //index of free location of timedStateArray
 char correctMessage[MAXCHAR][MINCHAR];//this is an array in order to save valid messages
-int cMIndex=0;
-bool switching;
+int cMIndex=0; //index of free location of correctMessage array
+bool switching; //checking system transition. switching=true --> transition happened. switching=false --> transition not happened
 
-void initDir();
-void createDataBase();
-void listen();
-void presentStates();
-void timedStates();
-void monitor(char message[MINCHAR], char present_state[MINCHAR]);
-void logging(char start_time[MINCHAR], char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR], char variables[MAXCHAR]);
-void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR]);
-void errorPrint(char input[MINCHAR], char error[MAXCHAR]);
+void initDir(); //find directory where program is located and run
+void createDataBase(); //create data base from statespace file
+void listen(); //listen on input port and get message
+void presentStates(); //process input message on current system states
+void timedStates(); //process on transitions that include waiting parameter and don't trigger by any input messages
+void monitor(char message[MINCHAR], char present_state[MINCHAR]); //process transition rows of each current state from database
+void logging(char start_time[MINCHAR], char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR], char variables[MAXCHAR]); //write output in consul and log file
+void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR]); //process variable and transitions of next states from database
+void errorPrint(char input[MINCHAR], char error[MAXCHAR]); //write error output when receive invalid input message
 
 int main()
 {
-    //###Create necessary folders (stateSpaceDB, eventLogs) in current directory
     initDir(stateSpaceDB, eventLogs);
-    //###Create database and specify initial state by createDataBase function
     printf("Create DataBase form spacastate file:\n");
     printf("#############################\n");
     createDataBase();
     printf("data base has been created successfully.\n\n");
-    //###Create initial array and counters
     strcpy(presentStateArray[presentSAIndex], initState);
     presentSAIndex++;
-    //###enable 3 thread in order to handle main modules
     #pragma omp parallel num_threads(3)
     {
         #pragma omp single nowait
@@ -293,7 +290,7 @@ void listen()
 }
 
 void presentStates()
-{//###Run parallel monitor function for do necessary action on input
+{
     while(1)
     {
         if (inputState == 1)

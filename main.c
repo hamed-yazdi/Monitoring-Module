@@ -12,6 +12,8 @@
 
 
 
+
+
 char stateSpaceDB[MAXCHAR]=""; //location of state spaces data base
 char eventLogs[MAXCHAR]=""; //location of event log file
 char initState[MINCHAR]="-"; //initial state id
@@ -37,8 +39,9 @@ void logging(char start_time[MINCHAR], char executionTime[MINCHAR], char present
 void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executionTime[MINCHAR], char present_state[MINCHAR], char message[MINCHAR], char next_state[MINCHAR]); //process variable and transitions of next states from database
 void errorPrint(char input[MINCHAR], char error[MAXCHAR]); //write error output when receive invalid input message
 
-int main()
+void main()
 {
+    printf("1\n");
     initDir(stateSpaceDB, eventLogs);
     printf("Create DataBase form spacastate file:\n");
     printf("#############################\n");
@@ -68,7 +71,11 @@ void initDir()
     char cwd[MAXCHAR];
     getcwd(cwd, sizeof(cwd));
     strcpy(stateSpaceDB, cwd);
-    strcat(stateSpaceDB,"\\stateSpaceDB\\");
+    #ifdef _WIN32
+        strcat(stateSpaceDB,"\\stateSpaceDB\\");
+    #else
+        strcat(stateSpaceDB,"/stateSpaceDB/");
+    #endif // _WIN32
     DIR *d;
     struct dirent *dir;
     d = opendir(stateSpaceDB);
@@ -78,11 +85,14 @@ void initDir()
         strcpy(file, stateSpaceDB);
         strcat(file, dir->d_name);
         remove(file);
-        free(file);
     }
     closedir(d);
     strcpy(eventLogs, cwd);
-    strcat(eventLogs,"\\eventLogs\\event.logs");
+    #ifdef _WIN32
+        strcat(eventLogs,"\\eventLogs\\event.logs");
+    #else
+        strcat(eventLogs,"/eventLogs/event.logs");
+    #endif // _WIN32
     remove(eventLogs);
 }
 
@@ -92,7 +102,11 @@ void createDataBase()
     getcwd(cwd, sizeof(cwd));
     char stateSpaceDirectory[MAXCHAR]="";
     strcpy(stateSpaceDirectory, cwd);
-    strcat(stateSpaceDirectory, "\\stateSpace\\");
+    #ifdef _WIN32
+        strcat(stateSpaceDirectory, "\\stateSpace\\");
+    #else
+        strcat(stateSpaceDirectory, "/stateSpace/");
+    #endif
     char stateSpaceFile[MAXCHAR]="";
     DIR *d;
     struct dirent *dir;
@@ -103,17 +117,15 @@ void createDataBase()
         while ((dir = readdir(d)) != NULL)
         {
             i++;
-            if (i == 3)
+            if(strcmp(dir->d_name, ".") == 0 || strcmp(dir->d_name, "..") == 0)
             {
-                strcpy(stateSpaceFile,stateSpaceDirectory);
-                strcat(stateSpaceFile,dir->d_name);
+                continue;
             }
-
+            strcpy(stateSpaceFile,stateSpaceDirectory);
+            strcat(stateSpaceFile,dir->d_name);
         }
-        free(i);
         closedir(d);
     }
-
     FILE *fstate;
     FILE *fp;
     char str[MAXCHAR];
@@ -148,12 +160,14 @@ void createDataBase()
                 getcwd(cwd, sizeof(cwd));
                 char stateSpaceDB[MAXCHAR]="";
                 strcpy(stateSpaceDB, cwd);
-                strcat(stateSpaceDB,"\\stateSpaceDB\\");
+                #ifdef _WIN32
+                    strcat(stateSpaceDB,"\\stateSpaceDB\\");
+                #else
+                    strcat(stateSpaceDB,"/stateSpaceDB/");
+                #endif
                 strcat(stateSpaceDB, state_id);
                 fstate = fopen(stateSpaceDB, "a+");
                 fprintf(fstate, "variables\t");
-                free(state_id);
-                free(stateSpaceDB);
         }
        else if (strcmp(str_ptr, "/state") == 0)
        {
@@ -181,8 +195,6 @@ void createDataBase()
             }
             strcat(strcat(variable_name, ":"), value);
             fprintf(fstate, "%s, ", variable_name);
-            free(variable_name);
-            free(value);
        }
        else if (strcmp(str_ptr, "transition") == 0)
        {
@@ -200,12 +212,14 @@ void createDataBase()
                     getcwd(cwd, sizeof(cwd));
                     char stateSpaceDB[MAXCHAR]="";
                     strcpy(stateSpaceDB, cwd);
-                    strcat(stateSpaceDB,"\\stateSpaceDB\\");
+                    #ifdef _WIN32
+                        strcat(stateSpaceDB,"\\stateSpaceDB\\");
+                    #else
+                        strcat(stateSpaceDB,"/stateSpaceDB/");
+                    #endif // _WIN32
                     strcat(stateSpaceDB, state_id);
                     fstate = fopen(stateSpaceDB, "a+");
                     fprintf(fstate, "\ntransition\t");
-                    free(state_id);
-                    free(stateSpaceDB);
                 }
                 else if (strcmp(str_ptr, "destination=") == 0)
                 {
@@ -257,6 +271,7 @@ void createDataBase()
 
 void listen()
 {
+printf("listen!!\n");
     for(int i=0; i<cMIndex; i++)
     {
         printf("%s ", correctMessage[i]);
@@ -291,6 +306,8 @@ void listen()
 
 void presentStates()
 {
+printf("present state!!\n");
+
     while(1)
     {
         if (inputState == 1)
@@ -430,6 +447,8 @@ void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executio
 
 void timedStates()
 {
+printf("timedstate!!\n");
+
     while(1)
     {
         if(timedSAIndex > 0)

@@ -7,12 +7,10 @@
 #include<dirent.h>
 #include <omp.h>
 #include<stdbool.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #define MAXCHAR 1000
 #define MINCHAR 30
-
-
-
-
 
 char stateSpaceDB[MAXCHAR]=""; //location of state spaces data base
 char eventLogs[MAXCHAR]=""; //location of event log file
@@ -41,7 +39,6 @@ void errorPrint(char input[MINCHAR], char error[MAXCHAR]); //write error output 
 
 void main()
 {
-    printf("1\n");
     initDir(stateSpaceDB, eventLogs);
     printf("Create DataBase form spacastate file:\n");
     printf("#############################\n");
@@ -71,6 +68,8 @@ void initDir()
     char cwd[MAXCHAR];
     getcwd(cwd, sizeof(cwd));
     strcpy(stateSpaceDB, cwd);
+    mkdir("stateSpaceDB",0777);
+    mkdir("eventLogs",0777);
     #ifdef _WIN32
         strcat(stateSpaceDB,"\\stateSpaceDB\\");
     #else
@@ -271,7 +270,7 @@ void createDataBase()
 
 void listen()
 {
-printf("listen!!\n");
+    //printf("listen!!\n");
     for(int i=0; i<cMIndex; i++)
     {
         printf("%s ", correctMessage[i]);
@@ -306,7 +305,7 @@ printf("listen!!\n");
 
 void presentStates()
 {
-printf("present state!!\n");
+    //printf("present state!!\n");
 
     while(1)
     {
@@ -447,8 +446,7 @@ void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executio
 
 void timedStates()
 {
-printf("timedstate!!\n");
-
+//printf("timedstate!!\n");
     while(1)
     {
         if(timedSAIndex > 0)

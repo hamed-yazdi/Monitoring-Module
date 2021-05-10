@@ -1,0 +1,14 @@
+# depslib dependency file v1.0
+1620643118 source:/home/hamed/Desktop/C::B/Monitoring-Module/main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<unistd.h>
+	<limits.h>
+	<dirent.h>
+	<omp.h>
+	<stdbool.h>
+	<sys/stat.h>
+	<sys/types.h>
+

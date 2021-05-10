@@ -1,3 +1,0 @@
-variables	Controler.temp:21, Controler.window:1, 
-transition	title:SENSE destination:3 executionTime:- timeValue:-  
-transition	title:SENSE destination:2 executionTime:- timeValue:-  

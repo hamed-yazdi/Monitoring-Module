@@ -272,7 +272,7 @@ void createDataBase()
 
 void listen()
 {
-    //printf("listen!!\n");
+    printf("valid input:  ");
     for(int i=0; i<cMIndex; i++)
     {
         printf("%s ", correctMessage[i]);
@@ -307,8 +307,6 @@ void listen()
 
 void presentStates()
 {
-    //printf("present state!!\n");
-
     while(1)
     {
         if (inputState == 1)
@@ -448,7 +446,6 @@ void monitorNextState(char ns_stateFile[MAXCHAR], long start_time, char executio
 
 void timedStates()
 {
-//printf("timedstate!!\n");
     while(1)
     {
         if(timedSAIndex > 0)

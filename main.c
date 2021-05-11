@@ -68,11 +68,13 @@ void initDir()
     char cwd[MAXCHAR];
     getcwd(cwd, sizeof(cwd));
     strcpy(stateSpaceDB, cwd);
-    mkdir("stateSpaceDB",0777);
-    mkdir("eventLogs",0777);
     #ifdef _WIN32
+        mkdir("stateSpaceDB");
+        mkdir("eventLogs");
         strcat(stateSpaceDB,"\\stateSpaceDB\\");
     #else
+        mkdir("stateSpaceDB",0777);
+        mkdir("eventLogs",0777);
         strcat(stateSpaceDB,"/stateSpaceDB/");
     #endif // _WIN32
     DIR *d;

@@ -12,3 +12,16 @@
 	<sys/stat.h>
 	<sys/types.h>
 
+1620720409 source:c:\users\user\desktop\codeblocks\monitoring-module\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<time.h>
+	<unistd.h>
+	<limits.h>
+	<dirent.h>
+	<omp.h>
+	<stdbool.h>
+	<sys/stat.h>
+	<sys/types.h>
+

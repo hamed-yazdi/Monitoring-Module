@@ -10,7 +10,7 @@ When run the application, it read program/system state-space file (*.statespace)
 
 NOTE: Watch simple example video file.
 
-in order to run monitoring module application in linux system use below actions:
+in order to run monitoring module application in linux system use these actions:
   1- change unix working directory where MonitoringModule.app application is located. 
   2- do ./MonitoringModule.app 
   

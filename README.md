@@ -1,7 +1,7 @@
 # Monitoring-Module
 The monitor module has developed to monitor program/system behavior at runtime. (for more information please read Project Definition.docx file)
 There are executable files for both unix and windows systems that is called MonitoringModule.app and MonitoringModule.exe respectively.
-Note that the aplication and stateSpace folder should be adjacent to each other at same directory.
+Note that the application and stateSpace folder should be adjacent to each other at same directory.
 
 When run the application, it read program/system state-space file (*.statespace) which was located on stateSpace folder. after then it do these actions
   1- Create stateSpaceDB folder and generate it's own database there. 
